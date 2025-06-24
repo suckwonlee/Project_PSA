@@ -1,0 +1,254 @@
+// File: res/layout/activity_character_selection.xml
+    <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:padding="16dp">
+
+    <!-- 상단: 캐릭터 선택 제목 -->
+    <TextView
+        android:id="@+id/title_character_select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="캐릭터 선택"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:layout_gravity="center_horizontal"
+        android:paddingBottom="8dp" />
+
+    <!-- 캐릭터 그리드: 4x2 -->
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:columnCount="4"
+        android:rowCount="2"
+        android:alignmentMode="alignMargins"
+        android:useDefaultMargins="true">
+
+        <!-- 용사후보 -->
+        <LinearLayout
+            android:id="@+id/char1_container"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:gravity="center">
+            <ImageButton
+                android:id="@+id/char1"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/placeholder_char1"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="용사후보"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/char2_container"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:gravity="center">
+            <ImageButton
+                android:id="@+id/char2"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/hunter"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="사냥꾼"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/char3_container"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:gravity="center">
+            <ImageButton
+                android:id="@+id/char3"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/priest"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="성직자"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/char4_container"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:gravity="center">
+            <ImageButton
+                android:id="@+id/char4"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/mage"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="마법사"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/char5_container"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:gravity="center">
+            <ImageButton
+                android:id="@+id/char5"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/druid"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="드루이드"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/char6_container"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:gravity="center">
+            <ImageButton
+                android:id="@+id/char6"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/engineer"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="기술자"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/char7_container"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:gravity="center">
+            <ImageButton
+                android:id="@+id/char7"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/bard"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="음유시인"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/char8_container"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:gravity="center">
+            <ImageButton
+                android:id="@+id/char8"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/exotic"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이계종"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+    </GridLayout>
+
+    <!-- 하단 정보 패널: 그림판 목업 그대로 -->
+    <LinearLayout
+        android:id="@+id/panel_info"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:padding="12dp"
+        android:background="@color/dark_gray">
+
+        <!-- 이미지 뷰 -->
+        <ImageView
+            android:id="@+id/portrait"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/placeholder_char1"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true" />
+
+        <!-- 첫 번째 텍스트 뷰: 이름 및 주요 능력치 -->
+        <TextView
+            android:id="@+id/detail_stats"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="이름: 용사후보\n공격력: 30   방어력: 20   치명타율: 5%   회피율: 3%   시작 HP: 120"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:paddingStart="12dp" />
+
+        <!-- 두 번째 텍스트 뷰: 장비 및 설명 -->
+        <TextView
+            android:id="@+id/detail_equip_desc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="장비: 검, 방패   패시브: 없음\n설명: 운명을 짊은 영웅 후보"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:paddingStart="12dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

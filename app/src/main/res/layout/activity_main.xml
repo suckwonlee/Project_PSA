@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <!-- 배경 플레이스홀더 이미지 -->
+    <ImageView
+        android:id="@+id/background_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/placeholder_background" />
+
+    <TextView
+        android:id="@+id/project_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Project-PSA"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:layout_gravity="top|center_horizontal"
+        android:paddingTop="16dp" />
+
+    <!-- 중앙 터치 안내 텍스트 -->
+    <TextView
+        android:id="@+id/touch_to_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Touch to Start"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:layout_gravity="center" />
+
+</FrameLayout>
