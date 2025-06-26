@@ -207,7 +207,6 @@
 
     </GridLayout>
 
-    <!-- 하단 정보 패널: 고정 높이 + 내부 가중치 분배 -->
     <LinearLayout
         android:id="@+id/panel_info"
         android:orientation="vertical"
@@ -260,37 +259,45 @@
             android:layout_marginTop="16dp"
             android:weightSum="4">
 
-            <!-- Attack Skill -->
-            <Spinner
-                android:id="@+id/spinner_attack_skill"
+            <!-- Attack Skill Button -->
+            <ImageButton
+                android:id="@+id/btn_attack_skill"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:prompt="공격 스킬" />
+                android:src="@drawable/placeholder_attack"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="공격 스킬 선택" />
 
-            <!-- Defense Skill -->
-            <Spinner
-                android:id="@+id/spinner_defense_skill"
+            <!-- Defense Skill Button -->
+            <ImageButton
+                android:id="@+id/btn_defense_skill"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:prompt="방어 스킬" />
+                android:src="@drawable/placeholder_defense"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="방어 스킬 선택" />
 
-            <!-- Rune Slot 1 -->
-            <Spinner
-                android:id="@+id/spinner_rune1"
+            <!-- Rune Slot 1 Button -->
+            <ImageButton
+                android:id="@+id/btn_rune1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:prompt="룬 슬롯 1" />
+                android:src="@drawable/placeholder_rune1"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="룬 슬롯 1 선택" />
 
-            <!-- Rune Slot 2 -->
-            <Spinner
-                android:id="@+id/spinner_rune2"
+            <!-- Rune Slot 2 Button -->
+            <ImageButton
+                android:id="@+id/btn_rune2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:prompt="룬 슬롯 2" />
+                android:src="@drawable/placeholder_rune2"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="룬 슬롯 2 선택" />
 
         </LinearLayout>
 
@@ -303,9 +310,15 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
-        android:background="@android:color/transparent"
-        android:contentDescription="Play or Unlock"
-        android:text="시작" />
+        android:background="@drawable/bg_btn_start"
+        android:text="시작"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:padding="8dp"
+        android:textAllCaps="false"
+        android:gravity="center"
+        android:contentDescription="Play or Unlock" />
+
 
 </LinearLayout>
 
