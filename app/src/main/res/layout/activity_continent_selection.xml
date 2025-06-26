@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@color/black">
 
-    <!-- 상단 네비게이션: 왼쪽/오른쪽 화살표 및 대륙 이름 -->
+    <!-- 상단 네비게이션 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
             android:src="@drawable/ic_arrow_right" />
     </LinearLayout>
 
-    <!-- 중간 설명 영역 -->
+    <!-- 중간 설명 영역: 높이를 wrap_content 로 변경 -->
     <FrameLayout
         android:id="@+id/continent_description_container"
         android:layout_width="match_parent"
@@ -53,5 +53,19 @@
             android:textColor="@android:color/white"
             android:textSize="16sp" />
     </FrameLayout>
+
+    <!-- 화면 맨 아래 여백에 위치하는 “다음” 버튼 -->
+    <Button
+        android:id="@+id/btn_next_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="24dp"
+        android:text="다음"
+        android:textAllCaps="false"
+        android:background="@drawable/bg_btn_start"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:gravity="center" />
 
 </FrameLayout>
