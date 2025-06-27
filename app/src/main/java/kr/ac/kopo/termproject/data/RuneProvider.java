@@ -1,16 +1,10 @@
 package kr.ac.kopo.termproject.data;
-
+import kr.ac.kopo.termproject.data.PassiveProvider;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 모든 룬(스탯 및 패시브)의 정의와 효과 조회를 제공하는 클래스
- */
 public class RuneProvider {
 
-    /**
-     * 스탯 룬 정의 (레벨 1~5)
-     */
     public enum StatProvider {
         STRIKE("강격의 룬", "레벨만큼 공격력 증가", new int[]{1, 2, 3, 4, 5});
 
@@ -24,21 +18,14 @@ public class RuneProvider {
             this.values = values;
         }
 
-        /** 화면에 표시할 이름 */
         public String getDisplayName() {
             return displayName;
         }
 
-        /** 룬 설명(플레이버 텍스트) */
         public String getFlavorText() {
             return flavorText;
         }
 
-        /**
-         * 룬 레벨에 따른 효과 수치를 반환합니다.
-         * @param level 1~5
-         * @return 해당 레벨의 보너스 값
-         */
         public int getValue(int level) {
             if (level < 1 || level > values.length) {
                 throw new IllegalArgumentException("Invalid stat rune level: " + level);
@@ -46,15 +33,11 @@ public class RuneProvider {
             return values[level - 1];
         }
 
-        /** 지원하는 최대 레벨을 반환합니다. */
         public int getMaxLevel() {
             return values.length;
         }
     }
 
-    /**
-     * 패시브 룬 정의 (룬 레벨 1~3)
-     */
     public enum PassiveProvider {
         IGNITION     ("진화(불지름)",       "어릴적부터 불장난을 많이 치던 아이였지. 그 불 장난이 전장에서 유용할 수준까지 가는건 상상도 못했군",            5,  8,  BonusType.ATTACK,     1,  Trigger.BATTLE_START),
         HEAVY_ARMOR  ("중갑",              "북대륙에서 살아남은 전사들은 갑옷이 필요하지 않다네. 그들의 육신이 어떤 갑옷보다도 더 단단했지.",         1,  3,  BonusType.DEFENSE,    2,  Trigger.BATTLE_START),
@@ -89,31 +72,24 @@ public class RuneProvider {
             this.trigger          = trigger;
         }
 
-        /** 화면에 표시할 이름 */
         public String getDisplayName() {
             return displayName;
         }
 
-        /** 룬 설명(플레이버 텍스트) */
         public String getFlavorText() {
             return flavorText;
         }
 
-        /** 발동 시점 */
         public Trigger getTrigger() {
             return trigger;
         }
 
-        /** 보너스 타입 */
         public BonusType getBonusType() {
             return bonusType;
         }
 
-        /**
-         * 룬 레벨에 따른 패시브 효과량
-         * @param runeLevel 1~3
-         * @return 기본 또는 상위 효과량
-         */
+
+
         public int getPassiveEffect(int runeLevel) {
             if (runeLevel < 1 || runeLevel > 3) {
                 throw new IllegalArgumentException("Invalid rune level: " + runeLevel);
@@ -121,11 +97,7 @@ public class RuneProvider {
             return runeLevel <= 2 ? baseEffect : secondaryEffect;
         }
 
-        /**
-         * 룬 레벨에 따른 추가 보너스 수치
-         * @param runeLevel 2~3일 때만 보너스 적용
-         * @return 보너스 값 또는 0
-         */
+
         public int getBonusValue(int runeLevel) {
             if (runeLevel < 2 || runeLevel > 3) {
                 return 0;
@@ -133,7 +105,7 @@ public class RuneProvider {
             return bonusValue;
         }
 
-        /** 보너스 종류 정의 */
+
         public enum BonusType {
             ATTACK,     // 공격력
             DEFENSE,    // 방어력
@@ -144,7 +116,6 @@ public class RuneProvider {
             INITIAL_HP  // 초기 HP
         }
 
-        /** 발동 시점 정의 */
         public enum Trigger {
             BATTLE_START,       // 전투 시작 시
             ON_HIT_POISON,      // 공격 명중 시 독 부여
@@ -153,9 +124,7 @@ public class RuneProvider {
         }
     }
 
-    /**
-     * 모든 룬의 이름 목록 조회 (Stat + Passive)
-     */
+
     public static List<String> getAllRuneNames() {
         List<String> list = new ArrayList<>();
         for (StatProvider s : StatProvider.values()) list.add(s.getDisplayName());
@@ -163,18 +132,14 @@ public class RuneProvider {
         return list;
     }
 
-    /**
-     * 스탯 룬만 이름 목록 조회
-     */
+
     public static List<String> getStatRuneNames() {
         List<String> list = new ArrayList<>();
         for (StatProvider s : StatProvider.values()) list.add(s.getDisplayName());
         return list;
     }
 
-    /**
-     * 패시브 룬만 이름 목록 조회
-     */
+
     public static List<String> getPassiveRuneNames() {
         List<String> list = new ArrayList<>();
         for (PassiveProvider p : PassiveProvider.values()) list.add(p.getDisplayName());
@@ -186,5 +151,26 @@ public class RuneProvider {
             names.add(sp.getDisplayName());
         }
         return names;
+    }
+    public static String getRuneName(PassiveProvider passive) {
+        switch (passive) {
+            case FIGHTING_SPIRIT: return "투지의 룬";
+            case LEECH: return "혈귀의 룬";
+            case HEAVY_ARMOR: return "혹한의 룬";
+            case IGNITION: return "화염의 룬";
+            case DETERMINATION: return "수호자의 룬";
+            case VENOM: return "독사의 룬";
+            case SURVIVAL: return "필생의 룬";
+            case ENGAGEMENT: return "돌격의 룬";
+            default: return "???";
+        }
+    }
+    public static kr.ac.kopo.termproject.data.PassiveProvider getPassiveProviderByName(String name) {
+        for (kr.ac.kopo.termproject.data.PassiveProvider p : kr.ac.kopo.termproject.data.PassiveProvider.values()) {
+            if (p.getDisplayName().equals(name)) {
+                return p;
+            }
+        }
+        return null;
     }
 }

@@ -7,12 +7,11 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.TermProject">
 
-        <!-- Main Launcher Activity -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -22,20 +21,14 @@
             </intent-filter>
         </activity>
 
-        <!-- Character Selection Screen -->
         <activity
             android:name=".CharacterSelectionActivity"
             android:exported="false" />
 
-        <!-- Continent Selection Screen -->
         <activity
             android:name=".ContinentSelectionActivity"
             android:exported="false" />
-
-        <!-- Other Activities -->
-<!--        <activity android:name=".ChapterActivity" />-->
-<!--        <activity android:name=".CharacterCreationActivity" />-->
-<!--        &lt;!&ndash; TODO: 필요한 액티비티를 추가 등록 &ndash;&gt;-->
+        <activity android:name=".BattleActivity" />
 
     </application>
 </manifest>

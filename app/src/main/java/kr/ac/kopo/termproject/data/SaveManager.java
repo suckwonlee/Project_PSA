@@ -93,7 +93,6 @@ public class SaveManager {
         }
     }
 
-    // Remaining Gold
     public int getRemainingGold() {
         return loadJson().optInt("remainingGold", 0);
     }
@@ -108,7 +107,6 @@ public class SaveManager {
         saveJson(root);
     }
 
-    // Unlocked Runes
     public Set<String> getUnlockedRunes() {
         JSONObject root = loadJson();
         Set<String> set = new HashSet<>();
@@ -140,7 +138,6 @@ public class SaveManager {
         saveJson(root);
     }
 
-    // Rune Slot 1
     public String getRune1Name() {
         JSONObject slots = loadJson().optJSONObject("runeSlots");
         if (slots != null) {
@@ -172,7 +169,6 @@ public class SaveManager {
         saveJson(root);
     }
 
-    // Rune Slot 2 (for future use)
     public String getRune2Name() {
         JSONObject slots = loadJson().optJSONObject("runeSlots");
         if (slots != null) {

@@ -5,9 +5,6 @@ import android.os.Parcelable;
 import kr.ac.kopo.termproject.data.PassiveProvider;
 import kr.ac.kopo.termproject.data.StatProvider;
 
-/**
- * 캐릭터의 기본 속성(모델) 클래스
- */
 public class Character implements Parcelable {
     private String id;             // 고유 식별자
     private String name;           // 캐릭터 이름
@@ -27,9 +24,6 @@ public class Character implements Parcelable {
     private StatProvider statRune;
     private int statRuneLevel;
 
-    /**
-     * 기존 풀 파라미터 생성자
-     */
     public Character(String id,
                      String name,
                      int imageResId,
@@ -54,29 +48,23 @@ public class Character implements Parcelable {
         this.description = description;
     }
 
-    /**
-     * 간편 생성자: id, name, imageResId만 지정 시
-     * 나머지는 기본값으로 초기화됩니다.
-     */
     public Character(String id, String name, int imageResId) {
         this(
                 id,
                 name,
                 imageResId,
-                100,      // 기본 HP
-                10,       // 기본 공격력
-                5,        // 기본 방어력
-                0,        // 기본 치명타율
-                0,        // 기본 회피율
-                "",       // 기본 장비
-                "",       // 기본 패시브 스킬
-                ""        // 기본 설명
+                100,
+                10,
+                5,
+                0,
+                0,
+                "",
+                "",
+                ""
         );
     }
 
-    /**
-     * Parcelable을 위한 생성자
-     */
+
     protected Character(Parcel in) {
         id = in.readString();
         name = in.readString();
@@ -152,7 +140,6 @@ public class Character implements Parcelable {
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
 
-    // 패시브 룬 getter/setter
     public PassiveProvider getPassiveRune() { return passiveRune; }
     public int getPassiveRuneLevel() { return passiveRuneLevel; }
     public void setPassiveRune(PassiveProvider rune, int level) {
@@ -160,7 +147,6 @@ public class Character implements Parcelable {
         this.passiveRuneLevel = level;
     }
 
-    // 스탯 룬 getter/setter
     public StatProvider getStatRune() { return statRune; }
     public int getStatRuneLevel() { return statRuneLevel; }
     public void setStatRune(StatProvider rune, int level) {

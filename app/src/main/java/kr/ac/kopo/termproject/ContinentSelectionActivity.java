@@ -37,7 +37,6 @@ public class ContinentSelectionActivity extends AppCompatActivity {
                     ContinentSelectionActivity.this,
                     CharacterSelectionActivity.class
             );
-            // 필요 시 선택한 대륙 정보 전달
             intent.putExtra("selectedContinent", continents[currentIndex]);
             startActivity(intent);
         });

@@ -1,6 +1,13 @@
 package kr.ac.kopo.termproject;
 
+
+import kr.ac.kopo.termproject.data.PassiveProvider;
+
+import kr.ac.kopo.termproject.data.GameDataProvider;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,29 +20,40 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import kr.ac.kopo.termproject.data.StatProvider;
+import kr.ac.kopo.termproject.data.HeroCandidateData;
 import kr.ac.kopo.termproject.data.PassiveProvider;
 import kr.ac.kopo.termproject.data.RuneProvider;
 import kr.ac.kopo.termproject.data.SaveManager;
 
 public class CharacterSelectionActivity extends AppCompatActivity {
+    private final HeroCandidateData hero = new HeroCandidateData();
+
     private ImageButton btnRune1;
+    private String selectedAttackSkill = null;
     private ImageButton btnRune2;
+    private ImageButton btnAttackSkill,btndefenseskill;
+    private String selectedRune1 = null;
+    private String selectedRune2 = null;
     private ImageView ivPortrait;
+    private String selectedDefenseSkill = null;
     private TextView tvPrompt;
     private TextView tvDescription;
 
     private SaveManager saveManager;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_selection);
 
-        btnRune1 = findViewById(R.id.btn_rune1);
-        btnRune2 = findViewById(R.id.btn_rune2);
-        ivPortrait = findViewById(R.id.portrait);
-        tvPrompt = findViewById(R.id.detail_prompt);
-        tvDescription = findViewById(R.id.detail_placeholder);
+        btnRune1        = findViewById(R.id.btn_rune1);
+        btnRune2        = findViewById(R.id.btn_rune2);
+        btnAttackSkill  = findViewById(R.id.btn_attack_skill);
+        ImageButton btnDefenseSkill = findViewById(R.id.btn_defense_skill);
+        ivPortrait      = findViewById(R.id.portrait);
+        tvPrompt        = findViewById(R.id.detail_prompt);
+        tvDescription   = findViewById(R.id.detail_placeholder);
+        Button btnStart = findViewById(R.id.btn_action);
 
         saveManager = new SaveManager(this);
         saveManager.load();
@@ -48,13 +66,69 @@ public class CharacterSelectionActivity extends AppCompatActivity {
 
         btnRune1.setOnClickListener(v -> handleRuneSlot(1));
         btnRune2.setOnClickListener(v -> handleRuneSlot(2));
+
+        btnAttackSkill.setOnClickListener(v -> {
+            String skill = "공격";
+            selectedAttackSkill = skill;
+            ivPortrait.setImageResource(hero.getAttackSkillIcon(skill));
+            tvPrompt.setText(skill);
+            tvDescription.setText(
+                    hero.getAttackSkillDescription(skill)
+                            + "\n\n"
+                            + hero.getAttackSkillFlavor(skill)
+            );
+        });
+
+        btnDefenseSkill.setOnClickListener(v -> {
+            String skill = "무기방어";
+            selectedDefenseSkill = skill;
+            ivPortrait.setImageResource(hero.getDefenseSkillIcon(skill));
+            tvPrompt.setText(skill);
+            tvDescription.setText(
+                    hero.getDefenseSkillDescription(skill)
+                            + "\n\n"
+                            + hero.getDefenseSkillFlavor(skill)
+            );
+        });
+        ImageButton btnChar1 = findViewById(R.id.char1);
+        btnChar1.setOnClickListener(v -> {
+            ivPortrait.setImageResource(R.drawable.placeholder_char1);
+            tvPrompt.setText(hero.getName());
+            tvDescription.setText(hero.getDescription());
+        });
+        btnRune2.setOnClickListener(v -> {
+            selectedRune2 = "강격의 룬";
+            ivPortrait.setImageResource(StatProvider.getStatIcon(selectedRune2));
+            tvPrompt.setText(selectedRune2);
+            tvDescription.setText("공격력에 영향을 주는 스탯 룬입니다. 레벨만큼 공격력이 상승합니다.");
+        });
+
+
+        btnStart.setOnClickListener(v -> {
+            Intent intent = new Intent(this, BattleActivity.class);
+            startActivity(intent);
+        });
     }
 
+
+    private String getRuneName(PassiveProvider passive) {
+        switch (passive) {
+            case FIGHTING_SPIRIT: return "투지의 룬";
+            case LEECH: return "혈귀의 룬";
+            case HEAVY_ARMOR: return "혹한의 룬";
+//            case IGNITION: return "화염의 룬";
+//            case DETERMINATION: return "수호자의 룬";
+//            case VENOM: return "독사의 룬";
+//            case SURVIVAL: return "필생의 룬";
+//            case ENGAGEMENT: return "돌격의 룬";
+            default: return "???";
+        }
+    }
     private void handleRuneSlot(int slot) {
         List<String> runeNames = new ArrayList<>();
         if (slot == 1) {
             for (PassiveProvider p : PassiveProvider.values()) {
-                runeNames.add(p.getDisplayName());
+                runeNames.add(getRuneName(p));
             }
         } else {
             runeNames = RuneProvider.getStatRuneNames();
@@ -80,9 +154,21 @@ public class CharacterSelectionActivity extends AppCompatActivity {
         if (slot == 1) applyPassiveRuneUI(runeName, level);
         else           applyStatRuneUI(runeName, level);
     }
-
+    private String getPassiveIconId(String runeName) {
+        switch (runeName) {
+            case "투지의 룬": return "passive_fighting_spirit";
+            case "흡혈의 룬": return "passive_leech";
+            case "혹한의 룬": return "passive_heavy_armor";
+            case "화염의 룬": return "passive_ignition";
+            case "수호자의 룬": return "passive_determination";
+            case "독사의 룬": return "passive_venom";
+            case "필생의 룬": return "passive_survival";
+            case "돌격의 룬": return "passive_engagement";
+            default: return "placeholder_rune1";
+        }
+    }
     private void applyPassiveRuneUI(String runeName, int level) {
-        int iconRes = getResources().getIdentifier("passive_" + runeName, "drawable", getPackageName());
+        int iconRes = getResources().getIdentifier(getPassiveIconId(runeName), "drawable", getPackageName());
         if (iconRes == 0) iconRes = R.drawable.placeholder_rune1;
 
         btnRune1.setImageResource(iconRes);
@@ -166,4 +252,5 @@ public class CharacterSelectionActivity extends AppCompatActivity {
     private String getStatRuneDescription(String runeName, int level) {
         return runeName + ": 공격력 +" + level;
     }
+
 }

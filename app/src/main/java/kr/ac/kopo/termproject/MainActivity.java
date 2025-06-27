@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        // 화면 터치 시 대륙 선택 화면으로 이동
         rootView.setOnClickListener(v -> {
             Intent intent = new Intent(this, ContinentSelectionActivity.class);
             startActivity(intent);

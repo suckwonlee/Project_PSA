@@ -1,8 +1,5 @@
 package kr.ac.kopo.termproject.data;
 
-/**
- * 패시브 룬 효과 정의 클래스 (레벨 1~3)
- */
 public enum PassiveProvider {
     FIGHTING_SPIRIT("투쟁심", new int[]{1, 2, 5, 8, 12}, BonusType.ATTACK, 2, Trigger.BATTLE_START),
     LEECH("흡혈", new int[]{3, 5, 10, 15, 25}, BonusType.LEECH, 1, Trigger.ON_HIT_LEECH),
@@ -43,7 +40,6 @@ public enum PassiveProvider {
         return values()[0].getMaxLevel();
     }
 
-    /** 보너스 효과의 적용 대상 */
     public enum BonusType {
         ATTACK,     // 공격력
         DEFENSE,    // 방어력
@@ -54,7 +50,6 @@ public enum PassiveProvider {
         INITIAL_HP  // 초기 HP
     }
 
-    /** 룬 효과 발동 시점을 정의하는 트리거 */
     public enum Trigger {
         BATTLE_START,              // 전투 시작 시
         ON_HIT_POISON,             // 공격 명중 시 독 부여

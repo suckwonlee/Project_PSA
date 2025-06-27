@@ -9,10 +9,6 @@ import kr.ac.kopo.termproject.model.Character;
 
 public class GameDataProvider {
 
-    /**
-     * 현재는 용사후보 한 명만 반환.
-     * 추가 캐릭터가 필요하면 이 리스트에 더 추가하세요.
-     */
     public static List<Character> loadAllCharacters(Context context) {
         List<Character> list = new ArrayList<>();
 
@@ -20,11 +16,11 @@ public class GameDataProvider {
                 "hero_candidate",
                 "용사후보",
                 R.drawable.placeholder_char1,
-                170,    // HP
-                13,     // ATK
-                14,     // DEF
-                7,      // 치명타율
-                0,      // 회피율 (미구현)
+                170,
+                13,
+                14,
+                7,
+                0,
                 "철제 중갑(중갑+2)",
                 "중갑(받는 피해 감소)",
                 "추상적이었기에 수많았던 용사 후보중 한명. 자신이 용사라 믿고 세상의 구원을 위해 일어섰다"
@@ -33,7 +29,6 @@ public class GameDataProvider {
         return list;
     }
 
-    /** 공격 스킬 목록 */
     public static List<String> getAttackSkills() {
         return Arrays.asList(
                 "공격",
@@ -42,7 +37,6 @@ public class GameDataProvider {
         );
     }
 
-    /** 공격 스킬 설명 */
     public static List<String> getAttackDescriptions() {
         return Arrays.asList(
                 "ATK의 100%만큼 물리 피해를 입힙니다 (등급당 +20%).",
@@ -51,16 +45,14 @@ public class GameDataProvider {
         );
     }
 
-    /** 방어 스킬 목록 */
     public static List<String> getDefenseSkills() {
         return Arrays.asList(
-                "가드",
+                "방어",
                 "무기방어",
                 "철벽의 의지"
         );
     }
 
-    /** 방어 스킬 설명 */
     public static List<String> getDefenseDescriptions() {
         return Arrays.asList(
                 "DEF의 250%만큼 받는 피해를 감소시킵니다 (등급당 +50%).",
@@ -69,11 +61,6 @@ public class GameDataProvider {
         );
     }
 
-    // ─────────────────────────────────────────────────────────
-    // 슬롯1: 패시브 룬 데이터
-    // ─────────────────────────────────────────────────────────
-
-    /** 슬롯1: 패시브 룬 이름 목록 */
     public static List<String> getPassiveRuneNames() {
         return Arrays.asList(
                 "화염의 룬",
@@ -87,7 +74,6 @@ public class GameDataProvider {
         );
     }
 
-    /** 슬롯1: 패시브 룬 레벨1 효과 이름 */
     public static List<String> getPassiveRunePassivesLevel1() {
         return Arrays.asList(
                 "방화",    // 화염의 룬
@@ -101,7 +87,6 @@ public class GameDataProvider {
         );
     }
 
-    /** 슬롯1: 패시브 룬 Flavor Text (설명) */
     public static List<String> getPassiveRuneFlavorTexts() {
         return Arrays.asList(
                 "어릴적부터 불장난을 많이 치던 아이였지. 그 불 장난이 전장에서 유용할 수준까지 가는건 상상도 못했군",
@@ -115,29 +100,18 @@ public class GameDataProvider {
         );
     }
 
-    // ─────────────────────────────────────────────────────────
-    // 슬롯2: 스탯 룬 데이터 (테스트용 강격의 룬)
-    // ─────────────────────────────────────────────────────────
-
-    /** 슬롯2: Stat Rune 이름 목록 */
     public static List<String> getStatRuneNames() {
         return Arrays.asList(
                 "강격의 룬"
         );
     }
-
-    /** 슬롯2: Stat Rune Flavor Text */
     public static List<String> getStatRuneFlavorTexts() {
         return Arrays.asList(
                 "강격의 룬: 등급이 오를수록 공격력이 커집니다."
         );
     }
 
-    /**
-     * 슬롯2: Stat Rune이 레벨별로 제공하는 공격력 보너스를 반환합니다.
-     * @param level 룬의 등급 (1~5)
-     * @return 증가할 공격력 값
-     */
+
     public static int getStatRuneAttackBonus(int level) {
         switch (level) {
             case 1: return 1;

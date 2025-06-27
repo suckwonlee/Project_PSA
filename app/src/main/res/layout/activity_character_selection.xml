@@ -242,14 +242,15 @@
         </LinearLayout>
 
         <!-- 2행: 상세 설명용 텍스트뷰 (남은 공간 채움) -->
+
         <TextView
             android:id="@+id/detail_placeholder"
             android:layout_width="match_parent"
             android:layout_height="110dp"
+            android:paddingTop="8dp"
             android:text="설명 및 장비 정보가 여기에 표시됩니다."
             android:textColor="@android:color/white"
-            android:textSize="14sp"
-            android:paddingTop="8dp" />
+            android:textSize="14sp" />
 
         <LinearLayout
             android:id="@+id/skill_selection"
@@ -267,6 +268,8 @@
                 android:layout_weight="1"
                 android:src="@drawable/placeholder_attack"
                 android:background="?attr/selectableItemBackgroundBorderless"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
                 android:contentDescription="공격 스킬 선택" />
 
             <!-- Defense Skill Button -->
@@ -277,6 +280,8 @@
                 android:layout_weight="1"
                 android:src="@drawable/placeholder_defense"
                 android:background="?attr/selectableItemBackgroundBorderless"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
                 android:contentDescription="방어 스킬 선택" />
 
             <!-- Rune Slot 1 Button -->
@@ -287,6 +292,8 @@
                 android:layout_weight="1"
                 android:src="@drawable/placeholder_rune1"
                 android:background="?attr/selectableItemBackgroundBorderless"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
                 android:contentDescription="룬 슬롯 1 선택" />
 
             <!-- Rune Slot 2 Button -->
@@ -297,6 +304,8 @@
                 android:layout_weight="1"
                 android:src="@drawable/placeholder_rune2"
                 android:background="?attr/selectableItemBackgroundBorderless"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
                 android:contentDescription="룬 슬롯 2 선택" />
 
         </LinearLayout>
