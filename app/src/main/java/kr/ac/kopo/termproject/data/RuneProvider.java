@@ -180,4 +180,11 @@ public class RuneProvider {
         for (PassiveProvider p : PassiveProvider.values()) list.add(p.getDisplayName());
         return list;
     }
+    public static List<String> getStatRunes() {
+        List<String> names = new ArrayList<>();
+        for (StatProvider sp : StatProvider.values()) {
+            names.add(sp.getDisplayName());
+        }
+        return names;
+    }
 }

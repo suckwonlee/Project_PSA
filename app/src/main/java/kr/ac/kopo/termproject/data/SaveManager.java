@@ -28,11 +28,16 @@ public class SaveManager {
 
     private final Context context;
     private final File saveFile;
-
+    private JSONObject cache = null;
     public SaveManager(Context context) {
         this.context = context;
         this.saveFile = new File(context.getFilesDir(), FILE_NAME);
         ensureFileExists();
+    }
+
+    // SaveManager.java 내
+    public void load() {
+        cache = loadJson();
     }
 
     /** Ensure save.json exists; if not, copy default from assets */
@@ -198,4 +203,5 @@ public class SaveManager {
         }
         saveJson(root);
     }
+
 }
